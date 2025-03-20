@@ -20,6 +20,7 @@ if "Adj Close" in data.columns:
     data[f"SMA_{moving_average_2}"] = data["Adj Close"].rolling(window=moving_average_2).mean()
 
     data = data.iloc[moving_average_2:]
+    plt.figure(figsize=(12, 6))
     plt.plot(data["Adj Close"], label="Share Price", color="lightgray")
     plt.plot(data[f"SMA_{moving_average_1}"], label=f"SMA_{moving_average_1}", color="orange")
     plt.plot(data[f"SMA_{moving_average_2}"], label=f"SMA_{moving_average_2}", color="purple")
@@ -51,6 +52,7 @@ data["Sell Signals"] = sell_signals
 
 print(data)
 
+plt.figure(figsize=(12, 6))
 plt.plot(data["Adj Close"], label="Share Price", alpha=0.5)
 plt.plot(data[f"SMA_{moving_average_1}"], label=f"SMA_{moving_average_1}", color="orange", linestyle="--")
 plt.plot(data[f"SMA_{moving_average_2}"], label=f"SMA_{moving_average_2}", color="pink", linestyle="--")
