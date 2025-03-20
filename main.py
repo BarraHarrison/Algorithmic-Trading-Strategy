@@ -1,7 +1,7 @@
 # Algorithmic Trading Strategy in Python
 import datetime as dt 
 import matplotlib.pyplot as plt 
-import pandas_datareader as web 
+import yfinance as yf 
 
 plt.style.use("dark_background")
 
@@ -11,7 +11,7 @@ moving_average_2 = 100
 start = dt.datetime.now() - dt.timedelta(days=365 * 3)
 end = dt.datetime.now()
 
-data = web.DataReader("FB", "yahoo", start, end)
+data = yf.download("META", start=start, end=end)
 data[f"SMA_{moving_average_1}"] = data["Adj Close"].rolling(window=moving_average_1).mean()
 data[f"SMA_{moving_average_2}"] = data["Adj Close"].rolling(window=moving_average_2).mean()
 
