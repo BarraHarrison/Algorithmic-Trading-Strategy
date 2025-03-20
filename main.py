@@ -15,12 +15,15 @@ data = yf.download("META", start=start, end=end, auto_adjust=False)
 
 print(data.columns)
 
-data[f"SMA_{moving_average_1}"] = data["Adj Close"].rolling(window=moving_average_1).mean()
-data[f"SMA_{moving_average_2}"] = data["Adj Close"].rolling(window=moving_average_2).mean()
+if "Adj Close" in data.columns:
+    data[f"SMA_{moving_average_1}"] = data["Adj Close"].rolling(window=moving_average_1).mean()
+    data[f"SMA_{moving_average_2}"] = data["Adj Close"].rolling(window=moving_average_2).mean()
 
-data = data.iloc[moving_average_2:]
-plt.plot(data["Adj Close"], label="Share Price", color="lightgray")
-plt.plot(data[f"SMA_{moving_average_1}"], label=f"SMA_{moving_average_1}", color="orange")
-plt.plot(data[f"SMA_{moving_average_2}"], label=f"SMA_{moving_average_2}", color="purple")
-plt.legend(loc="upper left")
-plt.show()
+    data = data.iloc[moving_average_2:]
+    plt.plot(data["Adj Close"], label="Share Price", color="lightgray")
+    plt.plot(data[f"SMA_{moving_average_1}"], label=f"SMA_{moving_average_1}", color="orange")
+    plt.plot(data[f"SMA_{moving_average_2}"], label=f"SMA_{moving_average_2}", color="purple")
+    plt.legend(loc="upper left")
+    plt.show()
+else:
+    print("Error: 'Adj Close' column not found in the downloaded data.")
