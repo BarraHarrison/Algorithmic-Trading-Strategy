@@ -39,4 +39,14 @@ for x in range(len(data)):
             sell_signals.append(float("nan"))
             trigger = 1
     elif data[f"SMA_{moving_average_1}"].iloc[x] < data[f"SMA_{moving_average_2}"].iloc[x] and trigger != -1:
-         pass
+            buy_signals.append(float("nan"))
+            sell_signals.append(data["Adj Close"].iloc[x])
+            trigger = -1
+    else:
+         buy_signals.append(float("nan"))
+         sell_signals.append(float("nan"))
+
+data["Buy Signals"] = buy_signals
+data["Sell Signals"] = sell_signals
+
+print(data)
