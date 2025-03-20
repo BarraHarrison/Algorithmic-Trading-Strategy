@@ -50,3 +50,11 @@ data["Buy Signals"] = buy_signals
 data["Sell Signals"] = sell_signals
 
 print(data)
+
+plt.plot(data["Adj Close"], label="Share Price", alpha=0.5)
+plt.plot(data[f"SMA_{moving_average_1}"], label=f"SMA_{moving_average_1}", color="orange", linestyle="--")
+plt.plot(data[f"SMA_{moving_average_2}"], label=f"SMA_{moving_average_2}", color="pink", linestyle="--")
+plt.scatter(data.index, data["Buy Signals"], label="Buy Signal", marker="^", color="00ff00", linewidths=3)
+plt.scatter(data.index, data["Sell Signals"], label="Sell Signal", marker="v", color="ff0000", linewidths=3)
+plt.legend(loc="upper left")
+plt.show()
