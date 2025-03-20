@@ -27,3 +27,16 @@ if "Adj Close" in data.columns:
     plt.show()
 else:
     print("Error: 'Adj Close' column not found in the downloaded data.")
+
+
+buy_signals = []
+sell_signals = []
+trigger = 0
+
+for x in range(len(data)):
+    if data[f"SMA_{moving_average_1}"].iloc[x] > data[f"SMA_{moving_average_2}"].iloc[x] and trigger != 1:
+            buy_signals.append(data["Adj Close"].iloc[x])
+            sell_signals.append(float("nan"))
+            trigger = 1
+    elif data[f"SMA_{moving_average_1}"].iloc[x] < data[f"SMA_{moving_average_2}"].iloc[x] and trigger != -1:
+         pass
