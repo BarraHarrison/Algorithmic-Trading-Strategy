@@ -11,7 +11,7 @@ moving_average_2 = 100
 start = dt.datetime.now() - dt.timedelta(days=365 * 3)
 end = dt.datetime.now()
 
-data = yf.download("META", start=start, end=end, auto_adjust=False)
+data = yf.download("TSLA", start=start, end=end, auto_adjust=False)
 
 print(data.columns)
 
