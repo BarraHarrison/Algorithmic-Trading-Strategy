@@ -12,7 +12,7 @@ moving_average_2 = 100
 start = dt.datetime.now() - dt.timedelta(days=365 * 3)
 end = dt.datetime.now()
 
-data = yf.download("TSLA", start=start, end=end, auto_adjust=False)
+data = yf.download("NVDA", start=start, end=end, auto_adjust=False)
 
 if isinstance(data.columns, pd.MultiIndex):
       data.columns = data.columns.droplevel(1)
