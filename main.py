@@ -6,12 +6,32 @@ import pandas as pd
 
 plt.style.use("dark_background")
 
-moving_average_1 = 30
-moving_average_2 = 100
+TICKER = "NVDA"
+EMA_SHORT = 30
+EMA_LONG = 100
+LOOKBACK_YEARS = 3
+
+def fetch_data(ticker, years):
+      pass
+
+def calculate_emas(data, short, long):
+      pass
+
+def generate_signals(data, short, long):
+      pass
+
+def plot_emas(data, short, long):
+      pass
+
+def plot_signals(data, short, long):
+      pass
+
+
+def main():
+      pass
 
 start = dt.datetime.now() - dt.timedelta(days=365 * 3)
 end = dt.datetime.now()
-
 data = yf.download("NVDA", start=start, end=end, auto_adjust=False)
 
 if isinstance(data.columns, pd.MultiIndex):
