@@ -88,6 +88,10 @@ def main():
     plot_emas(data, EMA_SHORT, EMA_LONG)
     plot_signals(data, EMA_SHORT, EMA_LONG)
 
+    filename = f"{TICKER}_signals.csv"
+    data.to_csv(filename)
+    print(f"📁 Exported signals to {filename}")
+
 
 if __name__ == "__main__":
     main()
