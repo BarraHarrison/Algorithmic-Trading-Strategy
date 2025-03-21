@@ -88,9 +88,16 @@ def main():
     plot_emas(data, EMA_SHORT, EMA_LONG)
     plot_signals(data, EMA_SHORT, EMA_LONG)
 
-    filename = f"{TICKER}_signals.csv"
-    data.to_csv(filename)
-    print(f"📁 Exported signals to {filename}")
+    signal_data = data[
+        data["Buy Signals"].notna() | data["Sell Signals"].notna()
+    ]
+
+    columns_to_export = ["Adj Close", f"EMA_{EMA_SHORT}", f"EMA_{EMA_LONG}", "Buy Signals", "Sell Signals"]
+    signal_data = signal_data[columns_to_export]
+
+    filename = f"{TICKER}_signals_only.csv"
+    signal_data.to_csv(filename)
+    print(f"📁 Exported buy/sell signals to {filename}")
 
 
 if __name__ == "__main__":
